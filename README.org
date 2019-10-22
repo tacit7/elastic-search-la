@@ -1,0 +1,69 @@
+
+
+
+
+
+
+
+
+
+
+
+* Installing elastic
+
+** Install java
+
+#+BEGIN_SRC sh :session *shell*
+sudo yum install java-1.8.0-openjdk
+#+END_SRC
+
+** Add elastic search user
+
+ #+BEGIN_SRC sh :session *shell*
+ sudo useradd elastic
+ #+END_SRC
+
+
+
+
+
+* x-pack
+
+#+BEGIN_SRC sh
+
+# Grab x-pack from elasticsearch
+curl -O https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-6.2.4.zip
+
+# move to the elastic search dir 
+cd elasticsearch    
+
+# and install using this command
+./bin/elasticsearch-plugin install \
+file:///home/elastic/elasticsearch/x-pack-6.2.4.zip    #install 
+     # ^^ Notice the triple slash
+
+#+END_SRC
+    pwd
+    ./bin/elasticsearch-plugin install file:///home/elastic/elasticsearch/x-pack-6.2.4.zip
+  cd ..
+
+ /home/elastic/elasticsearch/bin/x-pack/certutil ca
+  ./bin/x-pack/certutil/cert --ca certs/elastic-stack-ca.p12  --name master --dns $(hostname) --ip 172.31.46.87
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name master --dns $(hostname) --ip 172.31.46.87
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data1 --dns  tacit72c.mylabserver.com --ip 172.31.46.87
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data1 --dns  tacit72c.mylabserver.com --ip  172.31.33.41
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data1 --dns tacit72c.mylabserver.com --ip  172.31.33.41
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data1 --dns tacit73c.mylabserver.com --ip  172.31.37.171
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data1 --dns tacit73c.mylabserver.com --ip 172.31.37.171
+  ./bin/x-pack/certutil cert --ca certs/elastic-stack-ca.p12  --name data2 --dns tacit73c.mylabserver.com --ip 172.31.37.171
+  scp data1.p12 user@172.31.33.41:/tmp
+  scp data1.p12 cloud_user@172.31.33.41:/tmp
+  scp data2.p12 cloud_user@172.31.37.171:/tmp
+  exit
+  scp data1.p12 cloud_user@172.31.33.41:/tmp
+  scp data2.p12 cloud_user@172.31.37.171:/tmp
+  pwd
+  ./bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+  ./bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+  ./bin/elasticsearch-keystore add xpack.security.https.ssl.keystore.secure_password
+  ./bin/elasticsearch-keystore add xpack.security.https.ssl.truststore.secure_password
